@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANGUARD COLLEGE UNION</title>
+
+    <!-- Google Fonts: Kanit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Social Media Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif; /* Apply Kanit font to the body */
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header and Navbar Styling */
+        nav {
+            background-color: black; /* Black background for navbar */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between; /* Space between title and nav items */
+            align-items: center;
+            border-bottom: 2px solid red; /* Add a red border for navbar separation */
+        }
+
+        /* Title Style */
+        .navbar-title {
+            color: red; /* Title text in red */
+            font-size: 1.8em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo Style */
+        .navbar-logo {
+            width: 80px; /* Logo size */
+            height: auto;
+            margin-right: 15px; /* Space between the logo and title */
+        }
+
+        /* Nav Links */
+        nav a {
+            color: white; /* White text for links */
+            padding: 10px 15px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            color: red; /* Change link color to red on hover */
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px;
+            background-color: #1a1a1a; /* Dark background for content section */
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-top: 2px solid red; /* Add a red border for footer separation */
+        }
+
+        footer a {
+            color: red;
+            text-decoration: none;
+        }
+
+        /* Member Grid Layout */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .member {
+            background-color: #333; /* Dark background for member card */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .member img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .member h4 {
+            color: red;
+            margin: 10px 0 5px;
+        }
+
+        .member p {
+            color: white;
+            margin: 0;
+        }
+
+        /* Hover effect for members */
+        .member:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Social Media Icons Section */
+        .social-media {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .social-media a {
+            color: white;
+            font-size: 2em;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: red; /* Change icon color to red on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-title">
+            <!-- Logo Image -->
+            <img src="img.png" alt="Vanguard Logo" class="navbar-logo">
+            VANGUARD COLLEGE UNION
+        </div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Events</a>
+            <a href="https://www.sreeayyappacollege.ac.in/" target="_blank">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h3>Meet Our Union Members</h3>
+
+        <!-- Member Grid -->
+        <div class="member-grid">
+            <!-- Member 1 -->
+            <div class="member">
+                <img src="1.jpg" alt="Devu S Narayanan">
+                <h4>Devu S Narayanan</h4>
+                <p>Chairperson</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="member">
+                <img src="2.jpg" alt="Shibina S Jayan">
+                <h4>Shibina S Jayan</h4>
+                <p>Vice Chairperson</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="member">
+                <img src="3.jpg" alt="Sagar S Nair">
+                <h4>Sagar S Nair</h4>
+                <p>General Secretary</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="member">
+                <img src="4.jpg" alt="M D Devadath">
+                <h4>M D Devadath</h4>
+                <p>University Union Councilor</p>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="member">
+                <img src="5.jpg" alt="Radhika S Nair">
+                <h4>Radhika S Nair</h4>
+                <p>Arts Club Secretary</p>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="member">
+                <img src="6.jpg" alt="Siyana S">
+                <h4>Siyana S</h4>
+                <p>Magazine Editor</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+        <h4>Follow Us:</h4>
+        <a href="https://www.facebook.com/ayyappacollege/" target="_blank" class="fab fa-facebook-f"></a>
+        <a href="https://www.instagram.com/vanguard_college_union/" target="_blank" class="fab fa-instagram"></a>
+        <a href="https://chat.whatsapp.com/Lr4Le45xFgNE1YOMu0kHnI" target="_blank" class="fab fa-whatsapp"></a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Vanguard College Union. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>
+
+<a href="https://www.facebook.com/ayyappacollege/" target="_blank" class="fab fa-facebook-f"></a>
+        <a href="https://www.instagram.com/vanguard_college_union/" target="_blank" class="fab fa-instagram"></a>
+        <a href="https://chat.whatsapp.com/Lr4Le45xFgNE1YOMu0kHnI" target="_blank" class="fab fa-linkedin-in"></a>
+    </div>

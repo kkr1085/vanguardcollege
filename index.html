@@ -31,6 +31,7 @@
             align-items: center;
             border-bottom: 2px solid red;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .navbar-title {
@@ -57,6 +58,52 @@
 
         nav a:hover {
             color: red;
+        }
+
+        /* Navbar Toggle (Hamburger) */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            nav a {
+                display: none;
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                padding: 15px 0;
+                font-size: 1.2em;
+                border-top: 2px solid red;
+            }
+
+            nav a:hover {
+                background-color: #333;
+            }
+
+            nav.active a {
+                display: block;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
         }
 
         /* Main Content */
@@ -116,32 +163,37 @@
                 transform: translateY(0);
             }
         }
-/* Scrolling Text Animation */
-.scrolling-text {
-    margin-top: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-top: 2px solid red;
-    border-bottom: 2px solid red;
-}
 
-.scrolling-text span {
-    display: inline-block;
-    animation: scrollLeft 10s linear infinite;
-    color: red;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 10px 0;
-}
+        /* Scrolling Text Animation */
+        .scrolling-text {
+            margin-top: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+        }
 
-@keyframes scrollLeft {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
+        .scrolling-text span {
+            display: inline-block;
+            animation: scrollLeft 10s linear infinite;
+            color: red;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px 0;
+        }
+
+        @keyframes scrollLeft {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
 
         /* Member Grid Layout */
         .member-grid {
@@ -178,26 +230,6 @@
         .member:hover {
             transform: translateY(-10px);
         }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .member-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav a {
-                margin: 5px 0;
-            }
-
-            .navbar-title {
-                font-size: 1.5em;
-            }
-        }
     </style>
 </head>
 <body>
@@ -208,14 +240,18 @@
             <img src="img.png" alt="Vanguard Logo" class="navbar-logo">
             VANGUARD COLLEGE UNION
         </div>
+        <div class="nav-toggle" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div>
             <a href="index.html">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Events</a>
+            <a href="">About Us</a>
+            <a href="EVENT.HTML">Current Events</a>
             <a href="https://www.sreeayyappacollege.ac.in/" target="_blank">Contact</a>
         </div>
     </nav>
-
     <!-- Main Content Section -->
     <div class="content">
         <h3>Points Table</h3>
@@ -224,54 +260,60 @@
                 <tr>
                     <th>Rank</th>
                     <th>Team</th>
-                    <th>No of Event Prized</th>
                     <th>Points</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td class="team-name" data-details="Team Blue is the students of COMPUTER SCIENCE DEPT.">Blue</td>
-                    <td>6</td>
-                    <td>15</td>
+                    <td class="team-name" data-details="The students of COMPUTER SCIENCE DEPT.">CS</td>
+                    <td>19</td>
                 </tr>
                 <tr class="details-row">
                     <td colspan="4" class="details-cell"></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td class="team-name" data-details="Team Green is the students of BC & IMB and EMS DEPT.">Green</td>
-                    <td>1</td>
-                    <td>2</td>
-                </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
+                    <td class="team-name" data-details="The students of BC & IMB and EMS DEPT.">BC & IMB , EMS</td>
+                    <td>15</td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td class="team-name" data-details="Team Red is the students of BCOM DEPT.">Red</td>
-                    <td>1</td>
-                    <td>1</td>
+                    <td class="team-name" data-details="The students of MATHS AND ELECTRONICS DEPT.">MATHS , ELECTRONICS</td>
+                    <td>9</td>
+                </tr>
+                <tr class="details-row">
+                    <td colspan="4" class="details-cell"></td>
                 </tr>
                 <tr class="details-row">
                     <td colspan="4" class="details-cell"></td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td class="team-name" data-details="Team Yellow is the students of MATHS AND ELECTRONICS DEPT.">Yellow</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td class="team-name" data-details="The students of BCOM DEPT.">BCOM</td>
+                    <td>6</td>
                 </tr>
                 <tr class="details-row">
                     <td colspan="4" class="details-cell"></td>
                 </tr>
             </tbody>
         </table>
-<!-- Scrolling Text Animation -->
-<div class="scrolling-text">
-    <span>SCORE:- for individual items=3,2,1         |        for Team 10,5,3     (1st,2nd,3rd in order)</span>
-</div>
 
+        <!-- Scrolling Text Animation -->
+        <div class="scrolling-text">
+            <span>SCORE:- for individual items=3,2,1 | for Team 10,5,3 (1st,2nd,3rd in order)</span>
+        </div>
+
+        <!-- Button Section -->
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <a href="event.html" style="text-decoration: none;">
+                <button style="background-color: red; color: white; font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;">
+                    Go to Current Events
+                </button>
+            </a>
+        </div>
+
+        <!-- Meet Our Union Members Section -->
         <h3>Meet Our Union Members</h3>
         <div class="member-grid">
             <div class="member">
@@ -306,8 +348,14 @@
             </div>
         </div>
     </div>
-
     <script>
+        // Function to toggle the navigation bar on small screens
+        function toggleNav() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Points table interactivity code
         const teamNames = document.querySelectorAll('.team-name');
 
         teamNames.forEach((teamName) => {
@@ -330,5 +378,25 @@
             });
         });
     </script>
+
+<footer style="background-color: black; color: white; padding: 20px 10px; border-top: 2px solid red; text-align: center;">
+    <div style="margin-bottom: 10px;">
+        <p style="margin: 5px; font-size: 1.1em; font-weight: bold;">Contact Us</p>
+        <p style="margin: 5px;">Sree Ayyappa College, Eramallikkara, Kerala</p>
+        <p style="margin: 5px;">Email: <a href="mailto:vanguardunion@gmail.com" style="color: red; text-decoration: none;">vanguardunion@gmail.com</a></p>
+        <p style="margin: 5px;">Phone: <a href="tel:+916282115948" style="color: red; text-decoration: none;">+91 62821 15948</a></p>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <p style="margin: 5px; font-size: 1.1em; font-weight: bold;">Follow Us</p>
+        <a href="https://m.facebook.com/ayyappacollege/" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/vanguard_college_union?igsh=MXAzcTQ0cWg2MDNjbg==" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-instagram"></i></a>
+        <a href="https://chat.whatsapp.com/Lr4Le45xFgNE1YOMu0kHnI" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div>
+        <p style="margin: 5px; font-size: 0.9em;">&copy; 2025 Vanguard College Union. All rights reserved.</p>
+    </div>
+</footer>
+
+
 </body>
 </html>

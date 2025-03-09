@@ -1,201 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VANGUARD COLLEGE UNION</title>
 
-    <!-- Google Fonts: Kanit Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Font Awesome for Social Media Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet">
+
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Kanit', sans-serif;
-            background-color: black;
-            color: white;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-        }
-
-        /* Header and Navbar Styling */
-        nav {
-            background-color: black;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid red;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .navbar-title {
-            color: red;
-            font-size: 1.8em;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-logo {
-            width: 80px;
-            height: auto;
-            margin-right: 15px;
-        }
-
-        nav a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.1em;
-        }
-
-        nav a:hover {
-            color: red;
-        }
-
-        /* Navbar Toggle (Hamburger) */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .nav-toggle span {
-            width: 30px;
-            height: 4px;
-            background-color: white;
-            margin: 4px 0;
-            border-radius: 2px;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: flex;
-            }
-
-            nav a {
-                display: none;
-                width: 100%;
-                text-align: center;
-                margin: 0;
-                padding: 15px 0;
-                font-size: 1.2em;
-                border-top: 2px solid red;
-            }
-
-            nav a:hover {
-                background-color: #333;
-            }
-
-            nav.active a {
-                display: block;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
-        }
-
-        /* Main Content */
-        .content {
-            padding: 20px;
             background-color: #1a1a1a;
+            color: #ffffff;
+            scroll-behavior: smooth;
         }
 
-        h3 {
-            color: red;
+        /* Custom Cursor */
+        body {
+            cursor: url('default-cursor.png'), auto;
         }
 
-        /* Points Table Styling */
-        table {
+        .navbar {
+            position: absolute;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            color: white;
+            background: transparent !important;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            background-color: rgba(0, 0, 0, 0.5) !important;
         }
 
-        th, td {
-            border: 1px solid red;
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #4CAF50;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('dd.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 10px;
+            overflow: hidden;
         }
 
-        th {
-            background-color: black;
-            font-weight: bold;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
         }
 
-        tr:hover {
-            background-color: #333;
-            cursor: pointer;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            margin-top: -250px;
         }
 
-        .details-row {
-            display: none; /* Hide details row by default */
-            background-color: #222;
-            color: white;
-            animation: slideDown 0.3s ease;
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4CAF50;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .details-cell {
-            text-align: left;
-            padding: 15px;
-            font-size: 0.9em;
+        .hero p {
+            font-size: 1.25rem;
+            color: #ffffff;
+            animation: fadeIn 3s ease-in-out;
         }
 
-        @keyframes slideDown {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        /* Scrolling Text Animation */
-        .scrolling-text {
-            margin-top: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 2px solid red;
-            border-bottom: 2px solid red;
+        .table-container {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
         }
 
-        .scrolling-text span {
-            display: inline-block;
-            animation: scrollLeft 10s linear infinite;
-            color: red;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 10px 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
 
-        @keyframes scrollLeft {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(-100%);
-            }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            transform: scale(1.1);
+        th {
+            background-color: #4CAF50;
+            color: white;
         }
 
-        /* Member Grid Layout */
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* House Details Section */
+        .house-details {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .house-details h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .house-details p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* Meet Our Union Members Section */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -230,185 +196,219 @@
         .member:hover {
             transform: translateY(-10px);
         }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                margin-top: -150px;
+            }
+
+            .table-container {
+                bottom: 20px;
+                padding: 10px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .house-details {
+                padding: 15px;
+            }
+
+            .house-details p {
+                font-size: 1rem;
+            }
+
+            .member-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .hero-content {
+                margin-top: -100px;
+            }
+
+            .table-container {
+                bottom: 10px;
+                padding: 5px;
+            }
+
+            th, td {
+                padding: 5px;
+            }
+
+            .navbar-brand {
+                font-size: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.8rem;
+            }
+
+            .house-details {
+                padding: 10px;
+            }
+
+            .house-details p {
+                font-size: 0.875rem;
+            }
+
+            .member-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
     </style>
 </head>
-<body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="navbar-title">
-            <img src="img.png" alt="Vanguard Logo" class="navbar-logo">
-            VANGUARD COLLEGE UNION
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">VANGUARD COLLEGE UNION</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#points">Points Table</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#upcoming">Upcoming Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/VANGUARD_COLLEGE_UNION/" target="_blank">
+                            <i class="fab fa-instagram"></i> Contact
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h2>Welcome to Vanguard College Union</h2>
+            <p>Empowering students unity!</p>
         </div>
-        <div class="nav-toggle" onclick="toggleNav()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="">About Us</a>
-            <a href="EVENT.HTML">Events</a>
-            <a href="https://www.sreeayyappacollege.ac.in/" target="_blank">Contact</a>
-        </div>
-    </nav>
-    <!-- Main Content Section -->
-    <div class="content">
-        <h3>Points Table</h3>
-        <table class="points-table">
-            <thead>
+        <div class="table-container">
+            <h2>Overall Points Table</h2>
+            <table>
                 <tr>
-                    <th>Rank</th>
-                    <th>Team</th>
+                    <th>House</th>
                     <th>Points</th>
                 </tr>
-            </thead>
-            <tbody>
                 <tr>
-                    <td>1</td>
-                    <td class="team-name" data-details="The students of COMPUTER SCIENCE DEPT.">CS</td>
-                    <td>19</td>
-                </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
+                    <td>BLUE</td>
+                    <td>46</td>
                 </tr>
                 <tr>
-                    <td>2</td>
-                    <td class="team-name" data-details="The students of BC & IMB and EMS DEPT.">BC & IMB , EMS</td>
-                    <td>18</td>
-                </tr>
-                
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
+                    <td>GREEN</td>
+                    <td>43</td>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td class="team-name" data-details="The students of BCOM DEPT.">BCOM</td>
-                    <td>9</td>
-                </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
+                    <td>RED</td>
+                    <td>27</td>
                 </tr>
                 <tr>
-                    <td>3</td>
-                    <td class="team-name" data-details="The students of MATHS AND ELECTRONICS DEPT.">MATHS , ELECTRONICS</td>
-                    <td>9</td>
+                    <td>WHITE</td>
+                    <td>25</td>
                 </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
-                </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="team-name" data-details="The students of BCOM DEPT.">BCOM</td>
-                    <td>6</td>
-                </tr>
-                <tr class="details-row">
-                    <td colspan="4" class="details-cell"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Scrolling Text Animation -->
-        <div class="scrolling-text">
-            <span>SCORE:- for individual items=3,2,1 | for Team 10,5,3 (1st,2nd,3rd in order)</span>
+            </table>
         </div>
+    </div>
 
-        <!-- Button Section -->
-        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-            <a href="EVENT.HTML" style="text-decoration: none;">
-                <button style="background-color: red; color: white; font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease;">
-                    Go to Current Events
-                </button>
-            </a>
+    <!-- House Details Section -->
+    <section id="house-details" class="container py-5">
+        <div class="house-details">
+            <h2>House Details</h2>
+            <p><strong>GREEN:</strong> COMPUTER SCIENCE</p>
+            <p><strong>RED:</strong>BC & IMB , EMS</p>
+            <p><strong>BLUE:</strong> BCom</p>
+            <p><strong>WHITE:</strong> ELECTRONICS, MATHS</p>
         </div>
+    </section>
 
-        <!-- Meet Our Union Members Section -->
-        <h3>Meet Our Union Members</h3>
+    <!-- Upcoming Events Section -->
+    <section id="upcoming" class="container py-5">
+        <h2 class="text-center text-warning">Upcoming Events</h2>
+        <p class="text-center">College sports on march 13</p>
+        <p class="text-center">She Fest on march 14</p>
+        <p class="text-center">Holi</p>
+        <p class="text-center">College Day</p>
+        <p class="text-center">Farewell</p>
+    </section>
+
+    <!-- Meet Our Union Members Section -->
+    <section id="union-members" class="container py-5">
+        <h2 class="text-center text-warning">Meet Our Union Members</h2>
         <div class="member-grid">
             <div class="member">
-                <img src="1.jpg" alt="Devu S Narayanan">
                 <h4>Devu S Narayanan</h4>
                 <p>Chairperson</p>
             </div>
             <div class="member">
-                <img src="2.jpg" alt="Shibina S Jayan">
+
                 <h4>Shibina S Jayan</h4>
                 <p>Vice Chairperson</p>
             </div>
             <div class="member">
-                <img src="3.jpg" alt="Sagar S Nair">
+
                 <h4>Sagar S Nair</h4>
                 <p>General Secretary</p>
             </div>
             <div class="member">
-                <img src="4.jpg" alt="M D Devadath">
+            
                 <h4>M D Devadath</h4>
                 <p>University Union Councilor</p>
             </div>
             <div class="member">
-                <img src="5.jpg" alt="Radhika S Nair">
+
                 <h4>Radhika S Nair</h4>
                 <p>Arts Club Secretary</p>
             </div>
             <div class="member">
-                <img src="6.jpg" alt="Siyana S">
+
                 <h4>Siyana S</h4>
                 <p>Magazine Editor</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white py-3">
+        <p>&copy; 2025 Vanguard College Union. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Function to toggle the navigation bar on small screens
-        function toggleNav() {
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('active');
-        }
-
-        // Points table interactivity code
-        const teamNames = document.querySelectorAll('.team-name');
-
-        teamNames.forEach((teamName) => {
-            teamName.addEventListener('click', () => {
-                const detailsRow = teamName.parentElement.nextElementSibling;
-                const detailsCell = detailsRow.querySelector('.details-cell');
-
-                if (detailsRow.style.display === 'table-row') {
-                    detailsRow.style.display = 'none';
-                    detailsCell.textContent = '';
-                } else {
-                    document.querySelectorAll('.details-row').forEach((row) => {
-                        row.style.display = 'none';
-                        row.querySelector('.details-cell').textContent = '';
-                    });
-
-                    detailsRow.style.display = 'table-row';
-                    detailsCell.textContent = teamName.getAttribute('data-details');
-                }
-            });
-        });
+        AOS.init(); // Initialize AOS for scroll animations
     </script>
-
-<footer style="background-color: black; color: white; padding: 20px 10px; border-top: 2px solid red; text-align: center;">
-    <div style="margin-bottom: 10px;">
-        <p style="margin: 5px; font-size: 1.1em; font-weight: bold;">Contact Us</p>
-        <p style="margin: 5px;">Sree Ayyappa College, Eramallikkara, Kerala</p>
-        <p style="margin: 5px;">Email: <a href="mailto:vanguardunion@gmail.com" style="color: red; text-decoration: none;">vanguardunion@gmail.com</a></p>
-        <p style="margin: 5px;">Phone: <a href="tel:+916282115948" style="color: red; text-decoration: none;">+91 62821 15948</a></p>
-    </div>
-    <div style="margin-bottom: 10px;">
-        <p style="margin: 5px; font-size: 1.1em; font-weight: bold;">Follow Us</p>
-        <a href="https://m.facebook.com/ayyappacollege/" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/vanguard_college_union?igsh=MXAzcTQ0cWg2MDNjbg==" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-instagram"></i></a>
-        <a href="https://chat.whatsapp.com/Lr4Le45xFgNE1YOMu0kHnI" style="color: white; margin: 0 10px; font-size: 1.5em;"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <div>
-        <p style="margin: 5px; font-size: 0.9em;">&copy; 2025 Vanguard College Union. All rights reserved.</p>
-    </div>
-</footer>
-
-
 </body>
 </html>
